@@ -1,3 +1,4 @@
+use itertools::Itertools;
 use std::fs::File;
 use std::io::prelude::*;
 
@@ -29,30 +30,21 @@ fn parse_data(input: String) -> Result<Vec<u32>, String> {
 }
 
 fn part1(data: &Vec<u32>) -> Result<usize, String> {
-    let mut pairwise: Vec<(u32, u32)> = Vec::new();
-    let mut iter = data.iter().peekable();
-    while let Some(x) = iter.next() {
-        if let Some(y) = iter.peek() {
-            pairwise.push((*x, **y));
-        }
-    }
-    let result = pairwise.iter().filter(|(x, y)| x < y).count();
-    return Ok(result);
+    return Ok(data
+        .iter()
+        .tuple_windows::<(&u32, &u32)>()
+        .filter(|(x, y)| x < y)
+        .count());
 }
 
 fn part2(data: &Vec<u32>) -> Result<usize, String> {
-    let mut triplets_sum: Vec<u32> = Vec::new();
-    let mut i = 0;
-    while i < data.len() {
-        if i + 1 < data.len() && i + 2 < data.len() {
-            let x = data[i];
-            let y = data[i + 1];
-            let z = data[i + 2];
-            triplets_sum.push(x + y + z);
-        }
-        i += 1;
-    }
-    return part1(&triplets_sum);
+    return part1(
+        &data
+            .iter()
+            .tuple_windows::<(&u32, &u32, &u32)>()
+            .map(|(x, y, z)| x + y + z)
+            .collect::<Vec<u32>>(),
+    );
 }
 
 #[cfg(test)]
