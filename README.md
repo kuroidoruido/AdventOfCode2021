@@ -12,7 +12,7 @@ DISCLAIMER: I'm an Rust beginner, so do think solution used are the best way to 
 Day | Part 1   | Part 2
 --- | -------- | --------
 1   | ⚙️ ✅     | ⚙️ ✅
-2   | 🕕       | 🕕      
+2   | ⚙️ ✅     | ⚙️ ✅    
 3   | 🕕       | 🕕      
 4   | 🕕       | 🕕      
 5   | 🕕       | 🕕      
