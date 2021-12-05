@@ -40,23 +40,27 @@ fn part2(data: &Vec<u32>) -> Result<usize, String> {
 mod tests {
     use super::*;
 
+    fn sample_data() -> Vec<u32> {
+        vec![42]
+    }
+
     #[test]
     fn it_should_parse_correctly() {
         let input = "42";
-        let expected = vec![42];
+        let expected = sample_data();
         assert_eq!(parse_data(input.to_string()).unwrap(), expected);
     }
 
     #[test]
     fn it_should_compute_part1_correctly() {
-        let data = vec![42];
+        let data = sample_data();
         let expected = 1;
         assert_eq!(part1(&data).unwrap(), expected);
     }
 
     #[test]
     fn it_should_compute_part2_correctly() {
-        let data = vec![42];
+        let data = sample_data();
         let expected = 1;
         assert_eq!(part2(&data).unwrap(), expected);
     }
